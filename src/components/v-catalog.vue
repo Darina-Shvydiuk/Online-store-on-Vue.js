@@ -3,7 +3,7 @@
     <h1>Catalog</h1>
     <ul class="v-catalog__list">
       <v-catalog-item
-        v-for="product in products"
+        v-for="product in PRODUCTS"
         :key="product.article"
         v-bind:product_data="product"
         @sendDataToParent="showChildArticleInConsole"
@@ -14,6 +14,7 @@
 
 <script>
 import vCatalogItem from "./v-catalog.item.vue";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "v-catalog",
@@ -22,67 +23,21 @@ export default {
   },
   props: {},
   data() {
-    return {
-      products: [
-        {
-          image: "1.jpg",
-          name: "T-shirt 1",
-          price: 210,
-          article: "T1",
-          available: true,
-          category: "Men",
-        },
-        {
-          image: "2.jpg",
-          name: "T-shirt 2",
-          price: 315,
-          article: "T2",
-          available: true,
-          category: "Women",
-        },
-        {
-          image: "3.jpg",
-          name: "T-shirt 3",
-          price: 420,
-          article: "T3",
-          available: false,
-          category: "Women",
-        },
-        {
-          image: "4.jpg",
-          name: "T-shirt 4",
-          price: 530,
-          article: "T4",
-          available: true,
-          category: "Men",
-        },
-        {
-          image: "5.jpg",
-          name: "T-shirt 5",
-          price: 650,
-          article: "T5",
-          available: false,
-          category: "Women",
-        },
-        {
-          image: "6.jpg",
-          name: "T-shirt 6",
-          price: 870,
-          article: "T6",
-          available: true,
-          category: "Women",
-        },
-      ],
-    };
+    return {};
   },
-  computed: {},
+  computed: {
+    ...mapGetters(["PRODUCTS"]),
+  },
   methods: {
+    ...mapActions(["GET_PRODUCTS_FROM_API"]),
     showChildArticleInConsole(data) {
       console.log(data);
     },
   },
   watch: {},
-  mounted() {},
+  mounted() {
+    this.GET_PRODUCTS_FROM_API();
+  },
 };
 </script>
 
