@@ -1,7 +1,7 @@
 <template>
   <div class="v-catalog">
     <h1>Catalog</h1>
-    <ul class="v-catalog__list">
+    <ul class="v-catalog-list">
       <v-catalog-item
         v-for="product in PRODUCTS"
         :key="product.article"
@@ -41,13 +41,14 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.v-catalog {
-  &__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-  }
+<style>
+/* .v-catalog {
+} */
+
+.v-catalog-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>
