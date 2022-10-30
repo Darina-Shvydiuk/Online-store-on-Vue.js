@@ -1,10 +1,10 @@
 <template>
-  <div class="v-cart"></div>
+  <div class="v-card"></div>
 </template>
 
 <script>
 export default {
-  name: "v-cart",
+  name: "v-card",
   components: {},
   props: {},
   data() {

@@ -1,35 +1,98 @@
 <template>
   <div class="v-catalog">
     <h1>Catalog</h1>
-    <vCatalogItemVue />
+    <ul class="v-catalog__list">
+      <v-catalog-item
+        v-for="product in products"
+        :key="product.article"
+        v-bind:product_data="product"
+        @sendDataToParent="showChildArticleInConsole"
+      />
+    </ul>
   </div>
 </template>
 
 <script>
-import vCatalogItemVue from "./v-catalog.item.vue";
+import vCatalogItem from "./v-catalog.item.vue";
 
 export default {
   name: "v-catalog",
   components: {
-    vCatalogItemVue,
+    vCatalogItem,
   },
   props: {},
   data() {
-    return {};
+    return {
+      products: [
+        {
+          image: "1.jpg",
+          name: "T-shirt 1",
+          price: 210,
+          article: "T1",
+          available: true,
+          category: "Men",
+        },
+        {
+          image: "2.jpg",
+          name: "T-shirt 2",
+          price: 315,
+          article: "T2",
+          available: true,
+          category: "Women",
+        },
+        {
+          image: "3.jpg",
+          name: "T-shirt 3",
+          price: 420,
+          article: "T3",
+          available: false,
+          category: "Women",
+        },
+        {
+          image: "4.jpg",
+          name: "T-shirt 4",
+          price: 530,
+          article: "T4",
+          available: true,
+          category: "Men",
+        },
+        {
+          image: "5.jpg",
+          name: "T-shirt 5",
+          price: 650,
+          article: "T5",
+          available: false,
+          category: "Women",
+        },
+        {
+          image: "6.jpg",
+          name: "T-shirt 6",
+          price: 870,
+          article: "T6",
+          available: true,
+          category: "Women",
+        },
+      ],
+    };
   },
   computed: {},
-  methods: {},
+  methods: {
+    showChildArticleInConsole(data) {
+      console.log(data);
+    },
+  },
   watch: {},
   mounted() {},
 };
 </script>
 
-<style>
-.v-main-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 900px;
-  margin: 0 auto;
+<style lang="scss">
+.v-catalog {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 </style>

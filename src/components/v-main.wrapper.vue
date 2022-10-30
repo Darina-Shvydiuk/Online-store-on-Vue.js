@@ -2,18 +2,18 @@
   <div class="v-main-wrapper">
     <p>{{ title }}</p>
     <v-catalog />
-    <v-cart />
+    <v-card />
   </div>
 </template>
 
 <script>
 import vCatalog from "./v-catalog.vue";
-import vCart from "./v-cart.vue";
+import vCard from "./v-card.vue";
 export default {
   name: "v-main-wrapper",
   components: {
     vCatalog,
-    vCart,
+    vCard,
   },
   props: {},
   data() {
@@ -32,10 +32,6 @@ export default {
 
 <style>
 .v-main-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   max-width: 900px;
   margin: 0 auto;
 }
